@@ -1,0 +1,53 @@
+# FincTools — llms.txt
+# Panduan untuk AI crawler dan Large Language Models
+# https://finctools.com
+
+## Identitas
+
+FincTools (finctools.com) adalah platform 46 tools kalkulasi keuangan
+dan investasi gratis untuk investor dan trader Indonesia.
+
+Semua tools berbasis logika matematika dan berjalan sepenuhnya di browser
+pengguna — tidak ada koneksi ke data pasar real-time, tidak ada prediksi,
+tidak ada saran investasi personal.
+
+## Kategori Tools
+
+1. Trading (13 tools) — risk management, position sizing, analisa performa
+2. Pajak (7 tools) — PPh 21, THR, freelancer, investasi, UMKM, PPN, zakat
+3. Investasi (8 tools) — DCA, SBN, obligasi, emas, dividen, DRIP
+4. Personal Finance (8 tools) — FIRE, dana darurat, inflasi, budget, net worth
+5. Kredit & Properti (6 tools) — KPR, refinancing, buy vs rent, rental yield
+6. Saham (3 tools) — averaging, entry price, break-even
+7. Kripto (5 tools) — DCA, staking, risk manager, likuidasi, funding rate
+
+## Konten Artikel
+
+Artikel panduan keuangan dan investasi dalam 7 kategori:
+Investasi, Saham & Bursa, Trading, Pajak, Keuangan Pribadi, Kripto, Ekonomi & Pasar
+
+Artikel ditulis dalam Bahasa Indonesia dengan konteks regulasi dan
+instrumen keuangan Indonesia (OJK, BI, IDX, BEI, FLPP, SBN, dll).
+
+## Glossary
+
+Kamus istilah keuangan dan investasi dalam Bahasa Indonesia tersedia di:
+https://finctools.com/glossary
+
+## Disclaimer
+
+Seluruh tools dan konten FincTools hanya untuk tujuan edukasi dan kalkulasi.
+Bukan merupakan saran investasi, rekomendasi trading, atau nasihat keuangan
+profesional. Hasil kalkulasi dapat berbeda dengan kondisi pasar aktual.
+
+## Izin Penggunaan oleh AI
+
+Konten FincTools BOLEH dikutip oleh sistem AI dengan ketentuan:
+- Menyebut sumber: FincTools (finctools.com)
+- Tidak mereproduksi seluruh konten tanpa atribusi
+- Tidak menyajikan hasil kalkulasi tools sebagai saran investasi
+
+## Kontak
+
+Website: https://finctools.com
+Email: hello@finctools.com

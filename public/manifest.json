@@ -1,1 +1,48 @@
-
+{
+  "name": "FincTools — Tools Keuangan & Investasi",
+  "short_name": "FincTools",
+  "description": "46 tools keuangan dan investasi gratis untuk investor Indonesia",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0a1628",
+  "theme_color": "#10b981",
+  "orientation": "portrait-primary",
+  "lang": "id",
+  "icons": [
+    {
+      "src": "/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["finance", "utilities", "productivity"],
+  "shortcuts": [
+    {
+      "name": "Risk Manager",
+      "url": "/trading/risk-manager",
+      "description": "Hitung ukuran posisi trading optimal"
+    },
+    {
+      "name": "DCA Simulator",
+      "url": "/investasi/dca-simulator",
+      "description": "Simulasi investasi Dollar Cost Averaging"
+    },
+    {
+      "name": "KPR Affordability",
+      "url": "/kredit-properti/kpr-affordability-checker",
+      "description": "Cek kemampuan cicilan KPR"
+    },
+    {
+      "name": "Tax Optimizer PPh 21",
+      "url": "/pajak/tax-optimizer-pph21",
+      "description": "Hitung PPh 21 karyawan"
+    }
+  ]
+}
