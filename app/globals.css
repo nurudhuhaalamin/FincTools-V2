@@ -1,1 +1,173 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
+/* ─── CSS Variables ──────────────────────────────── */
+:root {
+  --bg-primary:    #ffffff;
+  --bg-secondary:  #f8fafc;
+  --bg-card:       #ffffff;
+  --text-primary:  #0f172a;
+  --text-secondary:#64748b;
+  --border:        #e2e8f0;
+  --surface:       #ffffff;
+  --surface-2:     #f1f5f9;
+}
+
+.dark {
+  --bg-primary:    #0a1628;
+  --bg-secondary:  #0f1f35;
+  --bg-card:       #0f1f35;
+  --text-primary:  #f1f5f9;
+  --text-secondary:#94a3b8;
+  --border:        #1e3a5f;
+  --surface:       #0a1628;
+  --surface-2:     #0f1f35;
+}
+
+/* ─── Base ───────────────────────────────────────── */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+/* ─── Utility Classes ────────────────────────────── */
+@layer components {
+
+  /* Cards */
+  .finc-card {
+    @apply bg-[--bg-card] border border-[--border] rounded-xl p-4;
+  }
+
+  .finc-card-hover {
+    @apply finc-card cursor-pointer
+           hover:border-finc-green/40 hover:shadow-md
+           transition-all duration-200;
+  }
+
+  /* Buttons */
+  .finc-btn {
+    @apply inline-flex items-center gap-2
+           px-4 py-2.5 rounded-xl
+           bg-finc-green hover:bg-emerald-600
+           text-white font-semibold text-sm
+           transition-all duration-150
+           active:scale-[0.98];
+  }
+
+  .finc-btn-ghost {
+    @apply inline-flex items-center gap-1.5
+           px-3 py-2 rounded-lg
+           text-[--text-secondary] text-sm font-medium
+           hover:bg-slate-100 dark:hover:bg-slate-800
+           hover:text-[--text-primary]
+           transition-all duration-150;
+  }
+
+  .finc-btn-outline {
+    @apply inline-flex items-center gap-2
+           px-4 py-2.5 rounded-xl
+           border border-[--border]
+           text-[--text-secondary] text-sm font-medium
+           hover:border-finc-green hover:text-finc-green
+           transition-all duration-150;
+  }
+
+  /* Form Elements */
+  .finc-label {
+    @apply block text-xs font-semibold
+           text-[--text-secondary] mb-1.5 uppercase tracking-wide;
+  }
+
+  .finc-input {
+    @apply w-full px-3 py-2.5 rounded-lg text-sm
+           bg-[--bg-secondary] border border-[--border]
+           text-[--text-primary]
+           focus:outline-none focus:ring-2 focus:ring-finc-green/40
+           focus:border-finc-green
+           transition-all duration-150
+           placeholder:text-[--text-secondary];
+  }
+
+  /* Result Cards */
+  .finc-result-good {
+    @apply finc-card
+           bg-emerald-50 dark:bg-emerald-950/20
+           border-emerald-200 dark:border-emerald-800;
+  }
+
+  .finc-result-warn {
+    @apply finc-card
+           bg-amber-50 dark:bg-amber-950/20
+           border-amber-200 dark:border-amber-800;
+  }
+
+  .finc-result-danger {
+    @apply finc-card
+           bg-red-50 dark:bg-red-950/20
+           border-red-200 dark:border-red-800;
+  }
+
+  /* Disclaimer */
+  .finc-disclaimer {
+    @apply flex items-start gap-2 text-xs
+           text-[--text-secondary] leading-relaxed
+           bg-amber-50 dark:bg-amber-950/20
+           border border-amber-200 dark:border-amber-800
+           rounded-xl p-3;
+  }
+
+  /* Badge */
+  .finc-badge {
+    @apply inline-flex items-center
+           text-xs font-semibold px-2.5 py-1 rounded-full
+           border;
+  }
+
+  /* Section heading */
+  .finc-section-title {
+    @apply font-heading text-2xl font-bold
+           text-[--text-primary] mb-1;
+  }
+
+  .finc-section-sub {
+    @apply text-sm text-[--text-secondary] mb-8;
+  }
+}
+
+/* ─── Scrollbar ──────────────────────────────────── */
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
+
+/* ─── Range Input ────────────────────────────────── */
+input[type='range'] {
+  @apply w-full h-1.5 rounded-full
+         bg-[--border] appearance-none cursor-pointer;
+}
+input[type='range']::-webkit-slider-thumb {
+  @apply appearance-none w-4 h-4 rounded-full
+         bg-finc-green cursor-pointer
+         border-2 border-white shadow-sm;
+}
+
+/* ─── Selection ──────────────────────────────────── */
+::selection {
+  background-color: #10b98133;
+  color: var(--text-primary);
+}
+
+/* ─── Focus Visible ──────────────────────────────── */
+:focus-visible {
+  outline: 2px solid #10b981;
+  outline-offset: 2px;
+}
