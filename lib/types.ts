@@ -96,6 +96,8 @@ export interface HasilAnalisis {
   rekomendasi: string[]
 }
 
+export type HasilAnalisisData = HasilAnalisis
+
 // ─── Article Types ────────────────────────────────
 
 export type KategoriArtikel =
@@ -159,12 +161,14 @@ export interface Artikel {
 // ─── Glossary Types ───────────────────────────────
 
 export interface GlossaryTerm {
-  term:        string          // Istilah
-  slug:        string          // URL-friendly
-  singkatan?:  string          // Opsional: DTI, KPR, dll
-  kategori:    KategoriTool | KategoriArtikel | 'umum'
-  definisi:    string          // 1 kalimat singkat
-  penjelasan:  string          // Paragraf panjang
+  term:        string
+  slug:        string
+  singkatan?:  string
+  kategori:    string
+  definisi:    string
+  penjelasan:  string
+  contoh?:     string
+  relatedTools?: string[]
   toolTerkait?: { nama: string; href: string }[]
   artikelTerkait?: { judul: string; href: string }[]
 }
