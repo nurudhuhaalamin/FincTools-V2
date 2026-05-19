@@ -24,7 +24,7 @@ export default function GlossaryPage() {
     url: 'https://finctools.com/glossary',
     hasDefinedTerm: semua.map(g => ({
       '@type': 'DefinedTerm',
-      name: g.istilah,
+      name: g.term,
       description: g.definisi,
     })),
   }
@@ -64,11 +64,11 @@ export default function GlossaryPage() {
               </h2>
               <div className="space-y-3">
                 {byLtr[h].map(g => (
-                  <div key={g.istilah} className="finc-card">
+                  <div key={g.term} className="finc-card">
                     <div className="flex items-start gap-3">
                       <div className="flex-1">
                         <p className="font-heading text-sm font-bold text-[--text-primary] mb-1">
-                          {g.istilah}
+                          {g.term}
                           {g.singkatan && <span className="ml-2 text-xs font-normal text-finc-green">({g.singkatan})</span>}
                         </p>
                         <p className="text-xs text-[--text-secondary] leading-relaxed">{g.definisi}</p>
@@ -84,10 +84,10 @@ export default function GlossaryPage() {
                         </span>
                       )}
                     </div>
-                    {g.toolTerkait && g.toolTerkait.length > 0 && (
+                    {g.relatedTools && Array.isArray(g.relatedTools) && (g.relatedTools as string[]).length > 0 && (
                       <div className="flex flex-wrap gap-2 mt-2 pt-2 border-t border-[--border]">
                         <span className="text-2xs text-[--text-secondary]">Tools terkait:</span>
-                        {g.toolTerkait.map(t => (
+                        {(g.relatedTools as string[]).map(t => (
                           <Link key={t} href={`/${t}`} className="text-2xs text-finc-green hover:underline">
                             {t.split('/').pop()?.replace(/-/g, ' ')}
                           </Link>
