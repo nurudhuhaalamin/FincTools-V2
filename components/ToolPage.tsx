@@ -50,7 +50,7 @@ export default function ToolPage({ tool, children, hasil, analisis, onSubmit, ha
     const url = window.location.href
     try {
       if (navigator.share) {
-        await navigator.share({ title: tool.nama, text: tool.deskripsi, url })
+        await navigator.share({ title: tool.name, text: tool.description, url })
       } else {
         await navigator.clipboard.writeText(url)
         setShared(true)
@@ -65,8 +65,8 @@ export default function ToolPage({ tool, children, hasil, analisis, onSubmit, ha
   const toolSchema = {
     '@context': 'https://schema.org',
     '@type': 'SoftwareApplication',
-    name: tool.nama,
-    description: tool.deskripsi,
+    name: tool.name,
+    description: tool.description,
     applicationCategory: 'FinanceApplication',
     operatingSystem: 'Web',
     offers: { '@type': 'Offer', price: '0', priceCurrency: 'IDR' },
@@ -86,11 +86,11 @@ export default function ToolPage({ tool, children, hasil, analisis, onSubmit, ha
   const howToSchema = tool.steps.length > 0 ? {
     '@context': 'https://schema.org',
     '@type': 'HowTo',
-    name: `Cara menggunakan ${tool.nama}`,
+    name: `Cara menggunakan ${tool.name}`,
     step: tool.steps.map((s, i) => ({
       '@type': 'HowToStep',
       position: i + 1,
-      name: s.judul,
+      name: s.title,
       text: s.desc,
     })),
   } : null
@@ -101,7 +101,7 @@ export default function ToolPage({ tool, children, hasil, analisis, onSubmit, ha
     itemListElement: [
       { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://finctools.com' },
       { '@type': 'ListItem', position: 2, name: cfg.nama, item: `https://finctools.com/${tool.kategori}` },
-      { '@type': 'ListItem', position: 3, name: tool.nama, item: `https://finctools.com/${tool.kategori}/${tool.slug}` },
+      { '@type': 'ListItem', position: 3, name: tool.name, item: `https://finctools.com/${tool.kategori}/${tool.slug}` },
     ],
   }
 
@@ -123,7 +123,7 @@ export default function ToolPage({ tool, children, hasil, analisis, onSubmit, ha
           <ChevronRight size={10} />
           <Link href={`/${tool.kategori}`} className="hover:text-finc-green transition-colors">{cfg.nama}</Link>
           <ChevronRight size={10} />
-          <span className="text-[--text-primary]">{tool.nama}</span>
+          <span className="text-[--text-primary]">{tool.name}</span>
         </nav>
 
         {/* ── Header ─────────────────────────── */}
@@ -134,10 +134,10 @@ export default function ToolPage({ tool, children, hasil, analisis, onSubmit, ha
                 {cfg.nama}
               </span>
               <h1 className="font-heading text-xl font-bold text-[--text-primary] leading-tight">
-                {tool.nama}
+                {tool.name}
               </h1>
               <p className="text-sm text-[--text-secondary] mt-1 leading-relaxed">
-                {tool.deskripsi}
+                {tool.description}
               </p>
             </div>
 
@@ -205,7 +205,7 @@ export default function ToolPage({ tool, children, hasil, analisis, onSubmit, ha
                     {i + 1}
                   </span>
                   <div>
-                    <p className="text-xs font-semibold text-[--text-primary]">{s.judul}</p>
+                    <p className="text-xs font-semibold text-[--text-primary]">{s.title}</p>
                     <p className="text-xs text-[--text-secondary] mt-0.5">{s.desc}</p>
                   </div>
                 </li>
@@ -258,33 +258,28 @@ export default function ToolPage({ tool, children, hasil, analisis, onSubmit, ha
         )}
 
         {/* ── Related Tools ───────────────────── */}
-        {tool.relatedTools.length > 0 && (
+        {tool.related.length > 0 && (
           <section>
             <h2 className="font-heading text-sm font-bold text-[--text-primary] mb-3 flex items-center gap-2">
               <BookOpen size={14} className="text-finc-green" />
               Tools Terkait
             </h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
-              {tool.relatedTools.slice(0, 4).map(ref => {
-                const [kat, slug] = ref.split('/')
-                const relCfg = kategoriToolConfig[kat as KategoriTool]
-                const label  = slug.split('-').map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(' ')
-                return (
+              {tool.related.slice(0, 4).map(rel => (
                   <Link
-                    key={ref}
-                    href={`/${kat}/${slug}`}
+                    key={rel.href}
+                    href={rel.href}
                     className="finc-card-hover flex items-center justify-between group"
                   >
                     <div>
                       <p className="text-xs font-semibold text-[--text-primary] group-hover:text-finc-green transition-colors">
-                        {label}
+                        {rel.name}
                       </p>
-                      <p className="text-xs text-[--text-secondary]">{relCfg?.nama}</p>
+                      <p className="text-xs text-[--text-secondary]">{rel.desc}</p>
                     </div>
                     <ChevronRight size={13} className="text-[--text-secondary] group-hover:text-finc-green transition-colors" />
                   </Link>
-                )
-              })}
+              ))}
             </div>
           </section>
         )}
