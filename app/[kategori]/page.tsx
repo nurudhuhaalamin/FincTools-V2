@@ -83,10 +83,10 @@ export default async function KategoriPage({ params }: Props) {
             >
               <div className="flex-1 min-w-0">
                 <p className="font-heading text-sm font-bold text-[--text-primary] group-hover:text-finc-green transition-colors mb-1 leading-snug">
-                  {tool.nama}
+                  {tool.name}
                 </p>
                 <p className="text-xs text-[--text-secondary] leading-relaxed line-clamp-2">
-                  {tool.deskripsi}
+                  {tool.description}
                 </p>
                 <div className="flex flex-wrap gap-1 mt-2">
                   {tool.keywords.slice(0, 2).map(kw => (
