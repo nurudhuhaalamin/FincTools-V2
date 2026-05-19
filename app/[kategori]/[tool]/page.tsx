@@ -19,12 +19,12 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   if (!tool) return {}
 
   return {
-    title: `${tool.name} — ${tool.description.slice(0, 60)}... | FincTools`,
-    description: tool.description,
+    title: `${tool.nama} — ${tool.deskripsi.slice(0, 60)}... | FincTools`,
+    description: tool.deskripsi,
     keywords: tool.keywords,
     openGraph: {
-      title: tool.name + ' | FincTools',
-      description: tool.description,
+      title: tool.nama + ' | FincTools',
+      description: tool.deskripsi,
       url: `https://finctools.com/${kategori}/${toolSlug}`,
       type: 'website',
     },
