@@ -1239,3 +1239,7 @@ export function getRelatedTools(tool: ToolData): ToolData[] {
 export function getTotalTools(): number {
   return toolsDatabase.length
 }
+
+export function getAllTools(): ToolData[] {
+  return toolsDatabase
+}

@@ -480,8 +480,9 @@ export function getArtikelByKategori(kategori: KategoriArtikel): Artikel[] {
   return artikelDatabase.filter(a => a.kategori === kategori)
 }
 
-export function getArtikelBySlug(slug: string): Artikel | undefined {
-  return artikelDatabase.find(a => a.slug === slug)
+export function getArtikelBySlug(kategoriOrSlug: string, slug?: string): Artikel | undefined {
+  if (slug) return artikelDatabase.find(a => a.kategori === kategoriOrSlug && a.slug === slug)
+  return artikelDatabase.find(a => a.slug === kategoriOrSlug)
 }
 
 export function getAllKategoriArtikel(): KategoriArtikel[] {
@@ -492,4 +493,19 @@ export function getArtikelTerbaru(limit = 3): Artikel[] {
   return [...artikelDatabase]
     .sort((a, b) => new Date(b.tanggal).getTime() - new Date(a.tanggal).getTime())
     .slice(0, limit)
+}
+
+export function getAllArtikel(): Artikel[] {
+  return artikelDatabase
+}
+
+export function getArtikelTerkait(artikel: Artikel, limit = 3): Artikel[] {
+  return artikelDatabase
+    .filter(a => a.kategori === artikel.kategori && a.slug !== artikel.slug)
+    .slice(0, limit)
+}
+
+// Overload untuk support (kategori, slug) dari Part 5 pages
+export function getArtikelByKategoriSlug(kategori: string, slug: string): Artikel | undefined {
+  return artikelDatabase.find(a => a.kategori === kategori && a.slug === slug)
 }

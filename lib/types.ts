@@ -212,3 +212,6 @@ export interface FavoriteTool {
 export interface ShareParams {
   [key: string]: string | number | boolean
 }
+
+// Alias untuk backward compatibility
+export type GlossaryItem = GlossaryTerm

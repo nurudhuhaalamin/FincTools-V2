@@ -143,3 +143,17 @@ export function searchGlossary(query: string): GlossaryItem[] {
     g.kategori.toLowerCase().includes(q)
   )
 }
+
+export function getAllGlossary(): GlossaryItem[] {
+  return glossaryDatabase
+}
+
+export function getGlossaryByLetter(): Record<string, GlossaryItem[]> {
+  const result: Record<string, GlossaryItem[]> = {}
+  for (const item of glossaryDatabase) {
+    const letter = (item.term || '?')[0].toUpperCase()
+    if (!result[letter]) result[letter] = []
+    result[letter].push(item)
+  }
+  return result
+}
