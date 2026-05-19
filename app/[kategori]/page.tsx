@@ -43,7 +43,7 @@ export default async function KategoriPage({ params }: Props) {
     url: `https://finctools.com/${kategori}`,
     hasPart: tools.map(t => ({
       '@type': 'SoftwareApplication',
-      name: t.nama,
+      name: t.name,
       url: `https://finctools.com/${kategori}/${t.slug}`,
       applicationCategory: 'FinanceApplication',
       offers: { '@type': 'Offer', price: '0', priceCurrency: 'IDR' },
