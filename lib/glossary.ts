@@ -118,10 +118,17 @@ export const glossaryDatabase: GlossaryItem[] = [
 
 // ─── Helper Functions ─────────────────────────────
 
-export function getGlossaryByLetter(letter: string): GlossaryItem[] {
-  return glossaryDatabase.filter(g =>
-    g.term.toUpperCase().startsWith(letter.toUpperCase())
-  )
+export function getGlossaryByLetter(): Record<string, GlossaryItem[]>
+export function getGlossaryByLetter(letter: string): GlossaryItem[]
+export function getGlossaryByLetter(letter?: string): Record<string, GlossaryItem[]> | GlossaryItem[] {
+  if (letter) return glossaryDatabase.filter(g => g.term.toUpperCase().startsWith(letter.toUpperCase()))
+  const result: Record<string, GlossaryItem[]> = {}
+  for (const item of glossaryDatabase) {
+    const l = (item.term || '?')[0].toUpperCase()
+    if (!result[l]) result[l] = []
+    result[l].push(item)
+  }
+  return result
 }
 
 export function getGlossaryBySlug(slug: string): GlossaryItem | undefined {
@@ -148,12 +155,3 @@ export function getAllGlossary(): GlossaryItem[] {
   return glossaryDatabase
 }
 
-export function getGlossaryByLetter(): Record<string, GlossaryItem[]> {
-  const result: Record<string, GlossaryItem[]> = {}
-  for (const item of glossaryDatabase) {
-    const letter = (item.term || '?')[0].toUpperCase()
-    if (!result[letter]) result[letter] = []
-    result[letter].push(item)
-  }
-  return result
-}
