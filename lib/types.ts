@@ -25,7 +25,7 @@ export type TipeTool =
   | 'S+A+G'  // Simulasi + Analisa + Grafik
 
 export interface ToolStep {
-  title: string
+  judul: string
   desc:  string
 }
 
@@ -54,20 +54,20 @@ export interface RelatedTool {
 export interface ToolData {
   slug:               string
   kategori:           KategoriTool
-  name:               string
-  description:        string
+  nama:               string
+  deskripsi:          string
   tipe:               TipeTool
   tombol:             string
   keywords:           string[]
   steps:              ToolStep[]
-  formula:            string
+  formula?:           string
   formulaExample?:    string
-  variables:          ToolVariable[]
-  history:            string
+  variables?:         ToolVariable[]
+  history?:           string
   interpretation?:    ToolInterpretation[]
   interpretationTitle?: string
   faqs:               ToolFAQ[]
-  related:            RelatedTool[]
+  relatedTools:       string[]
   references:         string[]
   dateVerified:       string
 }
@@ -96,9 +96,6 @@ export interface HasilAnalisis {
   rekomendasi: string[]
 }
 
-// Alias untuk komponen HasilAnalisa
-export type HasilAnalisisData = HasilAnalisis
-
 // ─── Article Types ────────────────────────────────
 
 export type KategoriArtikel =
@@ -112,7 +109,7 @@ export type KategoriArtikel =
 
 export interface KategoriArtikelConfig {
   nama:         string
-  slug:         KategoriArtikel
+  slug?:        KategoriArtikel
   deskripsi:    string
   gradientFrom: string
   gradientTo:   string
@@ -165,11 +162,9 @@ export interface GlossaryTerm {
   term:        string          // Istilah
   slug:        string          // URL-friendly
   singkatan?:  string          // Opsional: DTI, KPR, dll
-  kategori:    string
+  kategori:    KategoriTool | KategoriArtikel | 'umum'
   definisi:    string          // 1 kalimat singkat
   penjelasan:  string          // Paragraf panjang
-  contoh?:     string          // Contoh penggunaan
-  relatedTools?: string[]      // Tool slugs terkait
   toolTerkait?: { nama: string; href: string }[]
   artikelTerkait?: { judul: string; href: string }[]
 }
