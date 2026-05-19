@@ -1,3 +1,5 @@
+'use client'
+
 import Link from 'next/link'
 import { Clock, ChevronRight, ArrowRight, Info, Lightbulb, AlertTriangle, AlertCircle } from 'lucide-react'
 import { LineChart, Line, BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts'
