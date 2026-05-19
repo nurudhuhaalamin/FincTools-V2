@@ -19,9 +19,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { kategori } = await params
   const cfg = kategoriToolConfig[kategori as KategoriTool]
   if (!cfg) return {}
-  const tools = getToolsByKategori(kategori as KategoriTool)
   return {
-    title: `${cfg.nama} — ${tools.length} Tools Gratis | FincTools`,
+    title: `${cfg.nama} — ${cfg.tools.length} Tools Gratis | FincTools`,
     description: cfg.deskripsi,
     openGraph: { title: cfg.nama + ' | FincTools', description: cfg.deskripsi },
   }
@@ -43,7 +42,7 @@ export default async function KategoriPage({ params }: Props) {
     url: `https://finctools.com/${kategori}`,
     hasPart: tools.map(t => ({
       '@type': 'SoftwareApplication',
-      name: t.name,
+      name: t.nama,
       url: `https://finctools.com/${kategori}/${t.slug}`,
       applicationCategory: 'FinanceApplication',
       offers: { '@type': 'Offer', price: '0', priceCurrency: 'IDR' },
